@@ -2,258 +2,640 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Projects</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./CSS/styles3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Mohamed Fayaz</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-   body {
-      background-color: #f0f4f8;
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1728;
+      --card:#101d30;
+      --card2:#13233a;
+      --text:#f5f7fb;
+      --muted:#9fb0c5;
+      --line:rgba(255,255,255,.08);
+      --accent:#55c7ff;
+      --accent2:#7d7cff;
+      --shadow:0 24px 60px rgba(0,0,0,.28);
     }
-    .card-img-top {
-      height: 200px;
-      object-fit: cover;
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 85% 8%, rgba(85,199,255,.12), transparent 30%),
+        radial-gradient(circle at 10% 40%, rgba(125,124,255,.10), transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      min-height:100vh;
     }
-    .card {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+
+    .navbar-custom{
+      background:rgba(7,17,31,.82);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line);
+      padding:15px 0;
     }
-    .card-body {
-      flex-grow: 1;
+
+    .navbar-brand{
+      font-size:1.15rem;
+      font-weight:800;
+      color:#fff !important;
+      letter-spacing:.2px;
     }
-    .modal-body video {
-      width: 75%;
-      max-height: 400px;
+    .navbar-brand span{color:var(--accent)}
+
+    .nav-link{
+      color:var(--muted)!important;
+      font-weight:600;
+      transition:.25s ease;
+    }
+    .nav-link:hover,.nav-link.active{color:var(--accent)!important}
+
+    .hero{
+      padding:100px 0 64px;
+      text-align:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 15px;
+      border-radius:999px;
+      background:rgba(85,199,255,.08);
+      border:1px solid rgba(85,199,255,.18);
+      color:var(--accent);
+      font-weight:700;
+      font-size:.86rem;
+      margin-bottom:22px;
+    }
+
+    .hero h1{
+      max-width:900px;
+      margin:0 auto 18px;
+      font-size:clamp(2.45rem,5vw,4.9rem);
+      font-weight:800;
+      line-height:1.03;
+      letter-spacing:-.035em;
+    }
+
+    .hero h1 span{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      max-width:780px;
+      margin:0 auto;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:1.05rem;
+    }
+
+    .projects-section{padding:20px 0 90px}
+
+    .project-card{
+      height:100%;
+      overflow:hidden;
+      border-radius:22px;
+      background:linear-gradient(180deg,rgba(19,35,58,.94),rgba(16,29,48,.94));
+      border:1px solid var(--line);
+      box-shadow:0 16px 35px rgba(0,0,0,.16);
+      transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(85,199,255,.34);
+      box-shadow:var(--shadow);
+    }
+
+    .project-media{
+      height:220px;
+      position:relative;
+      overflow:hidden;
+      background:#0b1422;
+    }
+
+    .project-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .45s ease;
+    }
+
+    .project-card:hover .project-media img{transform:scale(1.045)}
+
+    .project-tag{
+      position:absolute;
+      left:16px;
+      top:16px;
+      padding:7px 11px;
+      border-radius:999px;
+      font-size:.76rem;
+      font-weight:800;
+      color:#fff;
+      background:rgba(8,17,31,.78);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .project-body{
+      padding:23px;
+      display:flex;
+      flex-direction:column;
+      min-height:230px;
+    }
+
+    .project-title{
+      font-weight:800;
+      font-size:1.2rem;
+      margin-bottom:10px;
+    }
+
+    .project-text{
+      color:var(--muted);
+      line-height:1.65;
+      margin-bottom:22px;
+    }
+
+    .project-actions{margin-top:auto}
+
+    .btn-project{
+      border:none;
+      border-radius:12px;
+      padding:11px 16px;
+      font-weight:700;
+      color:white;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      box-shadow:0 10px 24px rgba(85,199,255,.12);
+      transition:.25s ease;
+    }
+    .btn-project:hover{
+      color:#fff;
+      transform:translateY(-1px);
+      box-shadow:0 14px 28px rgba(85,199,255,.18);
+    }
+
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      margin-bottom:28px;
+    }
+    .section-title h2{font-weight:800;margin:0}
+    .section-title p{color:var(--muted);margin:0;max-width:520px}
+
+    .modal-content{
+      background:#0e1b2d;
+      color:var(--text);
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .modal-header{
+      border-bottom:1px solid var(--line);
+      padding:20px 24px;
+    }
+
+    .modal-body{padding:24px}
+    .modal-footer{
+      border-top:1px solid var(--line);
+      padding:18px 24px;
+    }
+
+    .btn-close{filter:invert(1)}
+
+    .modal-media{
+      width:100%;
+      max-height:430px;
+      border-radius:16px;
+      background:#050b13;
+      object-fit:contain;
+      margin-bottom:22px;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      text-align:left;
+    }
+
+    .detail-box{
+      background:rgba(255,255,255,.035);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+    }
+
+    .detail-box strong{
+      display:block;
+      color:var(--accent);
+      margin-bottom:6px;
+      font-size:.9rem;
+    }
+
+    .detail-box span{
+      color:#d6e0ec;
+      line-height:1.55;
+      font-size:.94rem;
+    }
+
+    .footer{
+      border-top:1px solid var(--line);
+      padding:32px 0;
+      color:var(--muted);
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .footer a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .footer a:hover{color:var(--accent)}
+
+    @media(max-width:768px){
+      .hero{padding-top:78px}
+      .project-media{height:200px}
+      .detail-grid{grid-template-columns:1fr}
+      .section-title{display:block}
+      .section-title p{margin-top:10px}
     }
   </style>
 </head>
+
 <body>
 
-  <h1 class="text-center my-4">My Projects</h1>
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Mohamed <span>Fayaz</span></a>
 
-  <div class="container">
-    <div class="row g-4">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <!-- Project Cards -->
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/Height based sorting.png" class="card-img-top" alt="Height-Based Object Sorting">
-          <div class="card-body">
-            <h5 class="card-title">Height-Based Object Sorting</h5>
-            <p class="card-text">PLC-based conveyor sorting system using height sensors and Factory I/O simulation.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal1">View More</button>
-          </div>
-        </div>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="certifications.html">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="myhobbies.html">Hobbies</a></li>
+          <li class="nav-item"><a class="nav-link" href="contactme.html">Contact</a></li>
+        </ul>
       </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/water tank automation.png" class="card-img-top" alt="Water Tank Automation">
-          <div class="card-body">
-            <h5 class="card-title">Water Tank Automation</h5>
-            <p class="card-text">Tank filling system with PLC timers and Ignition SCADA interface.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal2">View More</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/obstacle avoidance.png" class="card-img-top" alt="Obstacle Detection">
-          <div class="card-body">
-            <h5 class="card-title">Obstacle Detection & Distance Monitoring</h5>
-            <p class="card-text">Ultrasonic sensor project using Arduino to detect object distance in real-time.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal3">View More</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/Smart robot car.png" class="card-img-top" alt="Smart Robot Car">
-          <div class="card-body">
-            <h5 class="card-title">Smart Robot Car 4.0</h5>
-            <p class="card-text">Bluetooth-enabled smart car with obstacle detection and mobile control.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal4">View More</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/Bluetooth Dc motor.png" class="card-img-top" alt="Bluetooth DC Motor">
-          <div class="card-body">
-            <h5 class="card-title">Bluetooth-Controlled DC Motor with LCD</h5>
-            <p class="card-text">Motor control using MSP430 and Bluetooth module, with speed display on LCD.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal5">View More</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/Beverage filling project.png" class="card-img-top" alt="Beverage Filling">
-          <div class="card-body">
-            <h5 class="card-title">Beverage Filling Automation</h5>
-            <p class="card-text">Automated bottling system using timers and sensors for filling and discharge.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal6">View More</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="./Projects/ABB-IRB-120.png" class="card-img-top" alt="Pick-and-Place Robot">
-          <div class="card-body">
-            <h5 class="card-title">Pick-and-Place Robot – ABB</h5>
-            <p class="card-text">Simulated robot cell using ABB RobotStudio for pick-and-place task programming.</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal7">View More</button>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
+  </nav>
 
-   <!-- Modals -->
-  <!-- Modal for each project with aim, working, components, tools -->
-  <!-- Additional modals added -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">
+        <i class="fa-solid fa-gears"></i>
+        Controls • Automation • Robotics
+      </div>
+
+      <h1>Engineering Projects Built Around <span>Automation</span></h1>
+
+      <p>
+        A collection of hands-on projects involving PLC programming, Factory I/O,
+        SCADA, embedded systems, robotics, sensors, motor control, and industrial automation.
+      </p>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Featured Projects</h2>
+        </div>
+        <p>
+          Select any project to view its objective, working principle, components, tools,
+          images, or demonstration video.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">PLC + Factory I/O</span>
+              <img src="./Projects/Height based sorting.png" alt="Height-Based Object Sorting">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Height-Based Object Sorting</h3>
+              <p class="project-text">PLC-based conveyor sorting system using height sensors and Factory I/O simulation.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal1">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">PLC + SCADA</span>
+              <img src="./Projects/water tank automation.png" alt="Water Tank Automation">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Water Tank Automation</h3>
+              <p class="project-text">Tank filling automation using PLC logic with Ignition SCADA monitoring and control.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal2">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">Arduino + Sensors</span>
+              <img src="./Projects/obstacle avoidance.png" alt="Obstacle Detection">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Obstacle Detection & Distance Monitoring</h3>
+              <p class="project-text">Ultrasonic sensor project using Arduino to detect and monitor object distance in real time.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal3">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">Robotics</span>
+              <img src="./Projects/Smart robot car.png" alt="Smart Robot Car">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Smart Robot Car 4.0</h3>
+              <p class="project-text">Bluetooth-enabled smart car with obstacle detection and mobile-based control.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal4">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">MSP430</span>
+              <img src="./Projects/Bluetooth Dc motor.png" alt="Bluetooth DC Motor">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Bluetooth-Controlled DC Motor</h3>
+              <p class="project-text">Motor control using MSP430 and Bluetooth communication with status display on LCD.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal5">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">Industrial Automation</span>
+              <img src="./Projects/Beverage filling project.png" alt="Beverage Filling">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Beverage Filling Automation</h3>
+              <p class="project-text">Automated bottling process using sensors, timers, filling logic, and discharge sequencing.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal6">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="project-card">
+            <div class="project-media">
+              <span class="project-tag">ABB RobotStudio</span>
+              <img src="./Projects/ABB-IRB-120.png" alt="Pick-and-Place Robot">
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Pick-and-Place Robot – ABB</h3>
+              <p class="project-text">Simulated ABB IRB120 robot cell for pick-and-place programming using RobotStudio.</p>
+              <div class="project-actions">
+                <button class="btn btn-project" data-bs-toggle="modal" data-bs-target="#modal7">
+                  View Project <i class="fa-solid fa-arrow-right ms-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL 1 -->
   <div class="modal fade" id="modal1" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Height-Based Object Sorting</h5>
-          <video class="w-100 mb-3" controls>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Height-Based Object Sorting</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <video class="modal-media" controls>
             <source src="./Projects/height-based-sorting-video-bugzs2.hevc.mp4" type="video/mp4">
           </video>
-          <p><strong>Aim:</strong> Automatically sort objects based on height using industrial automation.<br>
-          <strong>Working:</strong> Objects are placed on a conveyor, where a height sensor detects their size. The signal is processed by the PLC (Allen-Bradley Micro850), which activates diverters to sort items. Taller items go one direction, shorter items go another.<br>
-          <strong>Components:</strong> Micro850 PLC, Factory I/O, height sensors, conveyor belts, actuators.<br>
-          <strong>Tools:</strong> Connected Components Workbench (CCW), Factory I/O.</p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Automatically sort objects based on height using industrial automation.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>Objects move on a conveyor, a height sensor identifies size, and PLC logic activates diverters to route products.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>Micro850 PLC, Factory I/O, height sensors, conveyor belts, actuators.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>Connected Components Workbench (CCW), Factory I/O.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL 2 -->
   <div class="modal fade" id="modal2" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Water Tank Automation</h5>
-          <video class="w-100 mb-3" controls>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Water Tank Automation</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <video class="modal-media" controls>
             <source src="./Projects/scada-integrated-project-6mmz69.hevc.mp4" type="video/mp4">
           </video>
-          <p><strong>Aim:</strong> Automate tank water level control.<br>
-          <strong>Working:</strong> PLC timers manage pump operation based on level sensors. Ignition SCADA provides visual monitoring and control.<br>
-          <strong>Components:</strong> Micro850 PLC, tank, pump, level sensors.<br>
-          <strong>Tools:</strong> CCW, Ignition SCADA.</p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Automate water tank level control.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>PLC logic manages pump operation based on level conditions while Ignition SCADA provides monitoring and operator control.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>Micro850 PLC, tank, pump, level sensors.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>CCW, Ignition SCADA.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL 3 -->
   <div class="modal fade" id="modal3" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Obstacle Detection & Monitoring</h5>
-          <img src="./Projects/obstacle avoidance.png" class="img-fluid mb-3" alt="Project 5">
-          <p><strong>Aim:</strong> Detect obstacles and measure distance in real-time.<br>
-          <strong>Working:</strong> Ultrasonic sensor sends distance data to Arduino which processes and alerts on proximity.<br>
-          <strong>Components:</strong> Arduino, ultrasonic sensor, LCD, LED Lights<br>
-          <strong>Tools:</strong> Arduino IDE.</p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Obstacle Detection & Distance Monitoring</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="./Projects/obstacle avoidance.png" class="modal-media" alt="Obstacle Detection Project">
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Detect obstacles and measure distance in real time.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>An ultrasonic sensor sends distance data to Arduino, which processes the values and provides proximity indication.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>Arduino, ultrasonic sensor, LCD, LED lights.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>Arduino IDE.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL 4 -->
   <div class="modal fade" id="modal4" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Smart Robot Car 4.0</h5>
-          <video class="w-100 mb-3" controls>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Smart Robot Car 4.0</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <video class="modal-media" controls>
             <source src="./Projects/robot car 4.0.mp4" type="video/mp4">
           </video>
-          <p><strong>Aim:</strong> Create a mobile-controlled robot car with obstacle avoidance.<br>
-          <strong>Working:</strong> Bluetooth module receives commands from mobile app. Ultrasonic sensors detect obstacles. Microcontroller drives motor accordingly.<br>
-          <strong>Components:</strong> Arduino, motor driver, ultrasonic sensor, Bluetooth module, wheels.<br>
-          <strong>Tools:</strong> Arduino IDE, MIT App Inventor.</p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Create a mobile-controlled robot car with obstacle avoidance.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>Bluetooth receives mobile commands while ultrasonic sensing supports obstacle detection and motor control.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>Arduino, motor driver, ultrasonic sensor, Bluetooth module, wheels.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>Arduino IDE, MIT App Inventor.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL 5 -->
   <div class="modal fade" id="modal5" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Bluetooth-Controlled DC Motor</h5>
-          <img src="./Projects/Bluetooth Dc motor.png" class="img-fluid mb-3" alt="Project 5">
-          <p><strong>Aim:</strong> Control DC motor speed via Bluetooth.<br>
-          <strong>Working:</strong> MSP430 receives speed commands and controls motor. LCD displays real-time speed.<br>
-          <strong>Components:</strong> MSP430, Bluetooth module, LCD, DC motor.<br>
-          <strong>Tools:</strong> Code Composer Studio, Energia.</p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Bluetooth-Controlled DC Motor</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="./Projects/Bluetooth Dc motor.png" class="modal-media" alt="Bluetooth Controlled DC Motor">
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Control a DC motor through Bluetooth communication.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>MSP430 receives Bluetooth commands and controls the motor while an LCD displays operating information.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>MSP430, Bluetooth module, LCD, DC motor.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>Code Composer Studio, Energia.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL 6 -->
   <div class="modal fade" id="modal6" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Beverage Filling Automation</h5>
-          <img src="./Projects/Beverage PLC project.png" class="img-fluid mb-3" alt="Project 5">
-          <p><strong>Aim:</strong> Automate beverage filling process.<br>
-          <strong>Working:</strong> Sensors detect bottle, timers activate filling and discharge. PLC logic synchronizes stages.<br>
-          <strong>Components:</strong> Sensors, TLP Logix Pro, filling mechanism.<br>
-          <strong>Tools:TLP LogixPro</strong> </p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Beverage Filling Automation</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="./Projects/Beverage PLC project.png" class="modal-media" alt="Beverage Filling Automation">
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Automate a beverage filling process.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>Sensors detect the bottle, timers control filling and discharge, and PLC logic synchronizes each stage.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>Sensors, filling mechanism, PLC simulation environment.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>TLP LogixPro.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- MODAL 7 -->
   <div class="modal fade" id="modal7" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body text-center">
-          <h5 class="mb-3">Pick-and-Place Robot – ABB</h5>
-          <img src="./Projects/Abb robot studio project.png" class="img-fluid mb-3" alt="Project 7">
-          <p><strong>Aim:</strong> Simulate pick-and-place using ABB RobotStudio.<br>
-          <strong>Working:</strong> Robot program in RAPID controls arm to pick and place components based on coordinates.<br>
-          <strong>Components:</strong> ABB IRB120 model, gripper tool.<br>
-          <strong>Tools:</strong> ABB RobotStudio, RAPID language.</p>
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Pick-and-Place Robot – ABB</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <img src="./Projects/Abb robot studio project.png" class="modal-media" alt="ABB Pick and Place Robot">
+          <div class="detail-grid">
+            <div class="detail-box"><strong>Aim</strong><span>Simulate a pick-and-place operation using ABB RobotStudio.</span></div>
+            <div class="detail-box"><strong>Working</strong><span>RAPID programming controls the ABB IRB120 to pick and place components using programmed coordinates.</span></div>
+            <div class="detail-box"><strong>Components</strong><span>ABB IRB120 model, gripper tool.</span></div>
+            <div class="detail-box"><strong>Tools</strong><span>ABB RobotStudio, RAPID.</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <section id="Footer" class="bg-light">
-    <div class="container">
-      <footer class="py-4 mt-5">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="./contactme.html" class="nav-link px-3 text-muted">Contact Me</a></li>
-          <li class="nav-item"><a href="./myhobbies.html" class="nav-link px-3 text-muted">Hobbies</a></li>
-          <li class="nav-item"><a href="index.html" class="nav-link px-3 text-muted">About</a></li>
-        </ul>
-        <p class="text-center text-muted mb-0">© 2025 Mohamed Fayaz – Designed with ❤️ using Bootstrap</p>
-      </footer>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="footer-links">
+        <a href="index.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="myhobbies.html">Hobbies</a>
+        <a href="contactme.html">Contact</a>
+      </div>
+      <p class="mb-0">© 2026 Mohamed Fayaz • Controls & Automation Portfolio</p>
     </div>
-  </section>
+  </footer>
+
   <script>
-    const modals = document.querySelectorAll('.modal');
-  
-    modals.forEach(modal => {
+    document.querySelectorAll('.modal').forEach(modal => {
       modal.addEventListener('hidden.bs.modal', () => {
-        const videos = modal.querySelectorAll('video');
-        videos.forEach(video => {
+        modal.querySelectorAll('video').forEach(video => {
           video.pause();
           video.currentTime = 0;
         });
@@ -261,6 +643,6 @@
     });
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

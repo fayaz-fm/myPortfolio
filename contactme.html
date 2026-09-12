@@ -3,62 +3,363 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Me</title>
+  <title>Contact | Mohamed Fayaz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./CSS/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#101a2f;
+      --surface:#152238;
+      --surface2:#1a2942;
+      --text:#edf4ff;
+      --muted:#b7c3d6;
+      --line:#2a3a55;
+      --accent:#4db3ff;
+      --accent2:#78d0ff;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(77,179,255,.16), transparent 27%),
+        radial-gradient(circle at 88% 22%, rgba(120,208,255,.08), transparent 25%),
+        linear-gradient(180deg,#0b1220 0%,#101827 52%,#0d1524 100%);
+    }
+
+    .topbar{
+      padding:22px 0;
+      border-bottom:1px solid rgba(120,208,255,.10);
+      background:rgba(8,15,27,.55);
+      backdrop-filter:blur(12px);
+    }
+
+    .brand{
+      color:#fff;
+      text-decoration:none;
+      font-size:1.05rem;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    .brand span{color:var(--accent2);}
+
+    .topnav a{
+      color:#aebbd0;
+      text-decoration:none;
+      font-weight:600;
+      margin-left:24px;
+      transition:.2s ease;
+    }
+
+    .topnav a:hover{color:#fff;}
+
+    .contact-wrap{
+      min-height:calc(100vh - 160px);
+      display:flex;
+      align-items:center;
+      padding:70px 0;
+    }
+
+    .contact-panel{
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:linear-gradient(145deg,var(--surface2),var(--surface));
+      box-shadow:0 24px 70px rgba(0,0,0,.30);
+    }
+
+    .left-pane{
+      height:100%;
+      padding:50px 46px;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(77,179,255,.20), transparent 35%),
+        linear-gradient(150deg,#162842,#102038);
+      border-right:1px solid var(--line);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      color:#bfe8ff;
+      background:rgba(77,179,255,.10);
+      border:1px solid rgba(120,208,255,.25);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .left-pane h1{
+      font-size:clamp(2.4rem,5vw,4.2rem);
+      line-height:1.02;
+      font-weight:900;
+      letter-spacing:-.04em;
+      margin:24px 0 18px;
+    }
+
+    .left-pane h1 span{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .intro{
+      max-width:610px;
+      color:#c7d4e6;
+      font-size:1.05rem;
+      line-height:1.75;
+      margin-bottom:30px;
+    }
+
+    .availability{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#d8e7f7;
+      font-weight:650;
+    }
+
+    .status-dot{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:#62d99f;
+      box-shadow:0 0 0 6px rgba(98,217,159,.10);
+    }
+
+    .right-pane{
+      padding:42px;
+      height:100%;
+    }
+
+    .profile-row{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      margin-bottom:28px;
+    }
+
+    .profile-img{
+      width:96px;
+      height:96px;
+      border-radius:22px;
+      object-fit:cover;
+      border:2px solid rgba(120,208,255,.35);
+      box-shadow:0 10px 28px rgba(0,0,0,.28);
+    }
+
+    .name{
+      margin:0 0 6px;
+      font-size:1.45rem;
+      font-weight:850;
+    }
+
+    .role{
+      margin:0;
+      color:var(--accent2);
+      font-weight:650;
+      line-height:1.5;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      padding:17px 18px;
+      color:var(--text);
+      text-decoration:none;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+    }
+
+    .contact-item:hover{
+      color:#fff;
+      transform:translateX(4px);
+      border-color:rgba(120,208,255,.55);
+      background:rgba(77,179,255,.07);
+    }
+
+    .contact-icon{
+      width:46px;
+      height:46px;
+      display:grid;
+      place-items:center;
+      border-radius:13px;
+      color:#8fd8ff;
+      background:rgba(77,179,255,.10);
+      border:1px solid rgba(120,208,255,.18);
+      font-size:1.15rem;
+      flex:0 0 auto;
+    }
+
+    .contact-meta small{
+      display:block;
+      color:var(--muted);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      font-weight:800;
+      margin-bottom:2px;
+    }
+
+    .contact-meta strong{
+      font-size:.98rem;
+      font-weight:750;
+    }
+
+    .quick-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:28px;
+    }
+
+    .quick-links a{
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:11px;
+      font-weight:700;
+      font-size:.9rem;
+      transition:.2s ease;
+    }
+
+    .quick-links .primary-link{
+      color:#07111e;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+    }
+
+    .quick-links .secondary-link{
+      color:#dfefff;
+      border:1px solid rgba(120,208,255,.35);
+      background:transparent;
+    }
+
+    .quick-links a:hover{transform:translateY(-2px);}
+
+    footer{
+      padding:0 0 28px;
+      color:#8fa0b8;
+      text-align:center;
+      font-size:.9rem;
+    }
+
+    @media(max-width:991px){
+      .left-pane{border-right:0;border-bottom:1px solid var(--line);padding:40px 30px;}
+      .right-pane{padding:32px 24px;}
+      .topnav{display:none;}
+    }
+
+    @media(max-width:576px){
+      .contact-wrap{padding:36px 0;}
+      .profile-row{align-items:flex-start;}
+      .profile-img{width:82px;height:82px;border-radius:18px;}
+      .left-pane h1{font-size:2.45rem;}
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Contact Section -->
-  <section id="contactme" class="py-5">
+  <header class="topbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="brand">Mohamed <span>Fayaz</span></a>
+      <nav class="topnav">
+        <a href="index.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="contactme.html" style="color:#fff;">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-wrap">
     <div class="container">
-      <div class="card shadow-lg border-0 rounded-4">
-        <div class="card-header bg-primary text-white text-center fs-4">
-          Contact Me
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title mb-3">You can reach me through the channels below</h5>
-          <img src="./Logo and images/Resume pic.jpg" alt="My Picture" class="img-fluid rounded-circle mb-4" style="max-height: 200px;" />
+      <div class="contact-panel">
+        <div class="row g-0">
 
-          <p class="card-text">
-            <strong>Email:</strong><br />
-            <a href="mailto:fayaz0899@gmail.com" class="text-decoration-none">fayaz0899@gmail.com</a>
-          </p>
-
-          <p class="card-text">
-            <strong>Phone:</strong><br />
-            <a href="tel:+18135996911" class="btn btn-outline-primary mt-1">📞 Call me now</a>
-          </p>
-
-          <p class="card-text">
-            <strong>LinkedIn:</strong><br />
-            <a href="https://www.linkedin.com/in/mohamedfayazp/" target="_blank">
-              <img src="./Logo and images/linkedin logo.png" alt="LinkedIn" height="40" />
-            </a>
-          </p>
-
-          <div class="d-flex justify-content-center gap-3 mt-4">
-            <a href="index.html" class="btn btn-primary">Know More About Me</a>
-            <a href="myhobbies.html" class="btn btn-outline-secondary">See My Hobbies</a>
+          <div class="col-lg-7">
+            <section class="left-pane">
+              <span class="eyebrow"><i class="fa-solid fa-bolt"></i> Let’s Connect</span>
+              <h1>Have an opportunity<br><span>worth discussing?</span></h1>
+              <p class="intro">
+                I’m open to conversations around controls engineering, industrial automation, EPMS, PLC/HMI systems, commissioning, and data-center controls. If my background fits your team or project, I’d be glad to connect.
+              </p>
+              <div class="availability">
+                <span class="status-dot"></span>
+                Open to Junior Controls Engineer and related opportunities
+              </div>
+            </section>
           </div>
+
+          <div class="col-lg-5">
+            <section class="right-pane">
+              <div class="profile-row">
+                <img src="./Logo and images/Resume pic.jpg" alt="Mohamed Fayaz" class="profile-img" />
+                <div>
+                  <h2 class="name">Mohamed Fayaz</h2>
+                  <p class="role">Level 3 Controls Technician<br>Aspiring Junior Controls Engineer</p>
+                </div>
+              </div>
+
+              <div class="contact-list">
+                <a href="mailto:fayaz0899@gmail.com" class="contact-item">
+                  <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="contact-meta">
+                    <small>Email</small>
+                    <strong>fayaz0899@gmail.com</strong>
+                  </div>
+                </a>
+
+                <a href="tel:+18135996911" class="contact-item">
+                  <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                  <div class="contact-meta">
+                    <small>Phone</small>
+                    <strong>Call Me</strong>
+                  </div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/mohamedfayazp/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                  <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                  <div class="contact-meta">
+                    <small>LinkedIn</small>
+                    <strong>linkedin.com/in/mohamedfayazp</strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="quick-links">
+                <a href="index.html" class="primary-link"><i class="fa-solid fa-user me-2"></i>About Me</a>
+                <a href="projects.html" class="secondary-link"><i class="fa-solid fa-diagram-project me-2"></i>Projects</a>
+                <a href="certifications.html" class="secondary-link"><i class="fa-solid fa-certificate me-2"></i>Certifications</a>
+              </div>
+            </section>
+          </div>
+
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <section id="Footer" class="bg-light">
-    <div class="container">
-      <footer class="py-4 mt-5">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="./contactme.html" class="nav-link px-3 text-muted">Contact Me</a></li>
-          <li class="nav-item"><a href="./myhobbies.html" class="nav-link px-3 text-muted">Hobbies</a></li>
-          <li class="nav-item"><a href="index.html" class="nav-link px-3 text-muted">About</a></li>
-        </ul>
-        <p class="text-center text-muted mb-0">© 2025 Mohamed Fayaz – Designed with ❤️ using Bootstrap</p>
-      </footer>
-    </div>
-  </section>
+  <footer>
+    © 2026 Mohamed Fayaz • Controls & Automation Portfolio
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

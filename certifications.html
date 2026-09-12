@@ -2,163 +2,323 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Certifications</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./CSS/styles2.css" />
   <style>
+    body {
+      background: linear-gradient(180deg, #101827 0%, #142033 100%);
+      color: #eef4fb;
+      min-height: 100vh;
+    }
+
+    .page-title {
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .page-subtitle {
+      color: #b8c4d6;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .category-buttons .btn {
+      min-width: 190px;
+      margin: 6px;
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .category-buttons .btn:hover,
+    .category-buttons .btn.active-category {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    }
+
     .carousel-container {
       display: none;
     }
+
     .carousel-container.active {
       display: block;
+    }
+
+    .certificate-shell {
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+    }
+
+    .carousel-item img,
+    .carousel-item iframe {
+      width: 75% !important;
+      height: 520px !important;
+      object-fit: contain;
+      border: 0;
+      border-radius: 12px;
+      background: #fff;
+      padding: 6px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .caption-below {
+      max-width: 760px;
+      margin: 16px auto 0;
+      color: #dce5f1;
+    }
+
+    .caption-below h5 {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .caption-below p {
+      color: #b8c4d6;
+      margin-bottom: 0;
+    }
+
+    .cert-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(13, 110, 253, 0.16);
+      border: 1px solid rgba(110, 168, 254, 0.35);
+      color: #bcd4ff;
+      margin-bottom: 8px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 8%;
+    }
+
+    footer {
+      color: #9eacc0;
+    }
+
+    footer .nav-link {
+      color: #9eacc0 !important;
+    }
+
+    footer .nav-link:hover {
+      color: #ffffff !important;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-item img,
+      .carousel-item iframe {
+        width: 95% !important;
+        height: 360px !important;
+      }
+
+      .category-buttons .btn {
+        width: 90%;
+        min-width: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1 class="text-center my-4">My Certifications</h1>
+  <div class="container py-5">
+    <h1 class="text-center page-title mb-2">My Certifications</h1>
+    <p class="text-center page-subtitle mb-4">
+      Professional, LinkedIn Learning, and Udemy credentials supporting my growth in controls engineering, industrial automation, electrical safety, and SCADA systems.
+    </p>
 
-  <!-- Buttons -->
-  <div class="text-center mb-4">
-    <button class="btn custom-btn me-2" onclick="showCarousel('linkedin')">LinkedIn Certifications</button>
-    <button class="btn custom-btn" onclick="showCarousel('udemy')">Udemy Certifications</button>
-  </div>
-
-  <section id="slider" class="container">
-
-    <!-- LinkedIn Carousel -->
-    <div id="linkedin-carousel" class="carousel-container active">
-      <div id="carouselLinkedIn" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner text-center">
-          <div class="carousel-item active">
-            <img src="./Certification/Linkedin Learning/Become a PLC Developer.jpg" class="d-block w-50 mx-auto" alt="PLC Developer">
-            <div class="caption-below mt-2">
-              <h5>Become a PLC Developer</h5>
-              <p>Learned fundamental PLC programming using ladder logic, memory addressing, and industrial control concepts.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./Certification/Linkedin Learning/CertificateOfCompletion_Learning Industrial Automation_page-0001.jpg" class="d-block w-50 mx-auto" alt="Industrial Automation">
-            <div class="caption-below mt-2">
-              <h5>Learning Industrial Automation</h5>
-              <p>Gained foundational knowledge on sensors, actuators, PLCs, SCADA, and system integration in industrial environments.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./Certification/Linkedin Learning/PLC Memory organization.jpg" class="d-block w-50 mx-auto" alt="PLC Memory Organization">
-            <div class="caption-below mt-2">
-              <h5>PLC Memory Organization</h5>
-              <p>Explored PLC memory structure including input/output registers, timers, counters, and data storage blocks.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./Certification/Linkedin Learning/PLC Program Flow and Control Instructions.jpg" class="d-block w-50 mx-auto" alt="PLC Program Flow and Control Instructions">
-            <div class="caption-below mt-2">
-              <h5>PLC Program Flow and Control Instructions</h5>
-              <p>Studied essential PLC flow-control instructions including jumps, loops, conditional branching, and program sequencing.</p>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <img src="./Certification/Linkedin Learning/PLC Sequencer Logic.jpg" class="d-block w-50 mx-auto" alt="PLC Sequencer Logic">
-            <div class="caption-below mt-2">
-              <h5>PLC Sequencer Logic</h5>
-              <p>Learned design and implementation of sequencer logic for step-by-step industrial process control.</p>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <img src="./Certification/Linkedin Learning/PLC Simulation Software Factory IO with Connected Component Workbench.jpg" class="d-block w-50 mx-auto" alt="PLC Simulation with Factory IO">
-            <div class="caption-below mt-2">
-              <h5>PLC Simulation with Factory IO</h5>
-              <p>Simulated real-time industrial automation scenarios in Factory I/O, integrating PLC programming with 3D environments.</p>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <img src="./Certification/Linkedin Learning/SCADA Collect Analyze and Visualize Data for Industrial Automation.jpg" class="d-block w-50 mx-auto" alt="SCADA Data Visualization">
-            <div class="caption-below mt-2">
-              <h5>SCADA: Collect, Analyze, and Visualize Data</h5>
-              <p>Explored SCADA system principles, focusing on real-time data collection, analysis, and visualization for industrial control.</p>
-            </div>
-          </div>
-          <!-- Add more LinkedIn slides here -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselLinkedIn" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselLinkedIn" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+    <!-- Category Buttons -->
+    <div class="text-center mb-4 category-buttons">
+      <button id="btn-professional" class="btn btn-primary active-category" onclick="showCarousel('professional')">Professional Certificates</button>
+      <button id="btn-linkedin" class="btn btn-outline-light" onclick="showCarousel('linkedin')">LinkedIn Certifications</button>
+      <button id="btn-udemy" class="btn btn-outline-light" onclick="showCarousel('udemy')">Udemy Certifications</button>
     </div>
 
-    <!-- Udemy Carousel -->
-    <div id="udemy-carousel" class="carousel-container">
-      <div id="carouselUdemy" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner text-center">
-          <div class="carousel-item active">
-            <img src="./Certification/Udemy/Siemens TIA portal certificate.jpg" class="d-block w-50 mx-auto" alt="Siemens TIA Portal">
-            <div class="caption-below mt-2">
-              <h5>Siemens TIA Portal Programming</h5>
-              <p>Programmed Siemens S7 PLCs using TIA Portal for automation projects involving HMI and hardware interfacing.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./Certification/Udemy/factoryTalk view certificate.jpg" class="d-block w-50 mx-auto" alt="FactoryTalk View SE">
-            <div class="caption-below mt-2">
-              <h5>FactoryTalk View SE (HMI)</h5>
-              <p>Created HMI screens and connected them to PLCs to monitor and control real-time industrial processes with FactoryTalk View.</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./Certification/Udemy/Arduino certificate.jpg" class="d-block w-50 mx-auto" alt="Arduino Programming">
-            <div class="caption-below mt-2">
-              <h5>Arduino for Embedded Systems</h5>
-              <p>Built automation prototypes using Arduino, sensors, actuators, and C programming for embedded applications.</p>
-            </div>
-          </div>
-          <!-- Add more Udemy slides here -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUdemy" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselUdemy" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
+    <section id="slider" class="container certificate-shell">
 
-  </section>
-  <section id="Footer">
-    <div class="container">
-      <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a href="./contactme.html" class="nav-link px-2 text-muted">Contact Me!</a></li>
-          <li class="nav-item"><a href="./myhobbies.html" class="nav-link px-2 text-muted">Hobbies</a></li>
-          <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">About</a></li>
+      <!-- Professional Certificates Carousel -->
+      <div id="professional-carousel" class="carousel-container active">
+        <div id="carouselProfessional" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner text-center">
+
+            <div class="carousel-item active">
+              <img src="./Certification/Professional Certificates/ignition credential certificate.jpeg" class="d-block w-50 mx-auto" alt="Ignition 8.3 Credential">
+              <div class="caption-below mt-3">
+                <span class="cert-badge">SCADA / HMI</span>
+                <h5>Ignition 8.3 Credential — Inductive University</h5>
+                <p>Demonstrates foundational knowledge of Ignition SCADA, including platform concepts, tags, visualization, and industrial automation workflows.</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <iframe src="./Certification/Professional Certificates/Mohamed Fayaz NFPA 70E Certificate.pdf" title="NFPA 70E Certificate"></iframe>
+              <div class="caption-below mt-3">
+                <span class="cert-badge">Electrical Safety</span>
+                <h5>NFPA 70E Certification</h5>
+                <p>Completed electrical safety training focused on safe work practices, shock and arc-flash risk awareness, and energized electrical work environments.</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <iframe src="./Certification/Professional Certificates/Mohamed Fayaz OSHA 30 Certificate.pdf" title="OSHA 30 Certificate"></iframe>
+              <div class="caption-below mt-3">
+                <span class="cert-badge">Workplace Safety</span>
+                <h5>OSHA 30-Hour Outreach — Construction Industry</h5>
+                <p>Completed OSHA 30-hour safety training covering workplace hazards, construction safety practices, and regulatory awareness for field environments.</p>
+              </div>
+            </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselProfessional" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselProfessional" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- LinkedIn Carousel -->
+      <div id="linkedin-carousel" class="carousel-container">
+        <div id="carouselLinkedIn" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <img src="./Certification/Linkedin Learning/Become a PLC Developer.jpg" class="d-block w-50 mx-auto" alt="PLC Developer">
+              <div class="caption-below mt-2">
+                <h5>Become a PLC Developer</h5>
+                <p>Learned fundamental PLC programming using ladder logic, memory addressing, and industrial control concepts.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Linkedin Learning/CertificateOfCompletion_Learning Industrial Automation_page-0001.jpg" class="d-block w-50 mx-auto" alt="Industrial Automation">
+              <div class="caption-below mt-2">
+                <h5>Learning Industrial Automation</h5>
+                <p>Gained foundational knowledge on sensors, actuators, PLCs, SCADA, and system integration in industrial environments.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Linkedin Learning/PLC Memory organization.jpg" class="d-block w-50 mx-auto" alt="PLC Memory Organization">
+              <div class="caption-below mt-2">
+                <h5>PLC Memory Organization</h5>
+                <p>Explored PLC memory structure including input/output registers, timers, counters, and data storage blocks.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Linkedin Learning/PLC Program Flow and Control Instructions.jpg" class="d-block w-50 mx-auto" alt="PLC Program Flow and Control Instructions">
+              <div class="caption-below mt-2">
+                <h5>PLC Program Flow and Control Instructions</h5>
+                <p>Studied essential PLC flow-control instructions including jumps, loops, conditional branching, and program sequencing.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Linkedin Learning/PLC Sequencer Logic.jpg" class="d-block w-50 mx-auto" alt="PLC Sequencer Logic">
+              <div class="caption-below mt-2">
+                <h5>PLC Sequencer Logic</h5>
+                <p>Learned design and implementation of sequencer logic for step-by-step industrial process control.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Linkedin Learning/PLC Simulation Software Factory IO with Connected Component Workbench.jpg" class="d-block w-50 mx-auto" alt="PLC Simulation with Factory IO">
+              <div class="caption-below mt-2">
+                <h5>PLC Simulation with Factory IO</h5>
+                <p>Simulated real-time industrial automation scenarios in Factory I/O, integrating PLC programming with 3D environments.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Linkedin Learning/SCADA Collect Analyze and Visualize Data for Industrial Automation.jpg" class="d-block w-50 mx-auto" alt="SCADA Data Visualization">
+              <div class="caption-below mt-2">
+                <h5>SCADA: Collect, Analyze, and Visualize Data</h5>
+                <p>Explored SCADA system principles, focusing on real-time data collection, analysis, and visualization for industrial control.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselLinkedIn" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselLinkedIn" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Udemy Carousel -->
+      <div id="udemy-carousel" class="carousel-container">
+        <div id="carouselUdemy" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <img src="./Certification/Udemy/Siemens TIA portal certificate.jpg" class="d-block w-50 mx-auto" alt="Siemens TIA Portal">
+              <div class="caption-below mt-2">
+                <h5>Siemens TIA Portal Programming</h5>
+                <p>Programmed Siemens S7 PLCs using TIA Portal for automation projects involving HMI and hardware interfacing.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Udemy/factoryTalk view certificate.jpg" class="d-block w-50 mx-auto" alt="FactoryTalk View SE">
+              <div class="caption-below mt-2">
+                <h5>FactoryTalk View SE (HMI)</h5>
+                <p>Created HMI screens and connected them to PLCs to monitor and control real-time industrial processes with FactoryTalk View.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="./Certification/Udemy/Arduino certificate.jpg" class="d-block w-50 mx-auto" alt="Arduino Programming">
+              <div class="caption-below mt-2">
+                <h5>Arduino for Embedded Systems</h5>
+                <p>Built automation prototypes using Arduino, sensors, actuators, and C programming for embedded applications.</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselUdemy" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselUdemy" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="Footer">
+      <footer class="py-3 mt-5">
+        <ul class="nav justify-content-center border-bottom border-secondary pb-3 mb-3">
+          <li class="nav-item"><a href="./contactme.html" class="nav-link px-2">Contact Me!</a></li>
+          <li class="nav-item"><a href="./myhobbies.html" class="nav-link px-2">Hobbies</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link px-2">About</a></li>
         </ul>
-        <p class="text-center text-muted">© 2025 Mohamed Fayaz Designed Website</p>
+        <p class="text-center mb-0">© 2026 Mohamed Fayaz — Portfolio</p>
       </footer>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <script>
     function showCarousel(type) {
-      const linkedin = document.getElementById('linkedin-carousel');
-      const udemy = document.getElementById('udemy-carousel');
+      const categories = ['professional', 'linkedin', 'udemy'];
 
-      if (type === 'linkedin') {
-        linkedin.classList.add('active');
-        udemy.classList.remove('active');
-      } else {
-        udemy.classList.add('active');
-        linkedin.classList.remove('active');
-      }
+      categories.forEach(category => {
+        document.getElementById(category + '-carousel').classList.remove('active');
+        const btn = document.getElementById('btn-' + category);
+        btn.classList.remove('btn-primary', 'active-category');
+        btn.classList.add('btn-outline-light');
+      });
+
+      document.getElementById(type + '-carousel').classList.add('active');
+      const activeBtn = document.getElementById('btn-' + type);
+      activeBtn.classList.remove('btn-outline-light');
+      activeBtn.classList.add('btn-primary', 'active-category');
     }
   </script>
 
